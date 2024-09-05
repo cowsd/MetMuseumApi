@@ -16,7 +16,6 @@ final class MainViewController: UITableViewController {
         fetchQuote()
     }
     
-    
 }
 
 // MARK: - Networking
