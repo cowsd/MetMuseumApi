@@ -7,17 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA296C482CF9EEB0007488EA /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA296C472CF9EEB0007488EA /* APIEndpoints.swift */; };
+		FA71EE4E2CF8B96F00676CA5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71EE4D2CF8B96D00676CA5 /* NetworkManager.swift */; };
 		FAB8F9472C8A1D7C00ABCD26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB8F9462C8A1D7C00ABCD26 /* AppDelegate.swift */; };
 		FAB8F9492C8A1D7C00ABCD26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB8F9482C8A1D7C00ABCD26 /* SceneDelegate.swift */; };
 		FAB8F94B2C8A1D7C00ABCD26 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB8F94A2C8A1D7C00ABCD26 /* MainViewController.swift */; };
 		FAB8F94E2C8A1D7C00ABCD26 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FAB8F94D2C8A1D7C00ABCD26 /* Base */; };
 		FAB8F9502C8A1D7D00ABCD26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAB8F94F2C8A1D7D00ABCD26 /* Assets.xcassets */; };
 		FAB8F9532C8A1D7D00ABCD26 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FAB8F9522C8A1D7D00ABCD26 /* Base */; };
-		FAB8F95C2C8A1D9500ABCD26 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB8F95B2C8A1D9500ABCD26 /* Quote.swift */; };
+		FAB8F95C2C8A1D9500ABCD26 /* Paintings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB8F95B2C8A1D9500ABCD26 /* Paintings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FAB8F9432C8A1D7C00ABCD26 /* NetworkingLesson.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkingLesson.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA296C472CF9EEB0007488EA /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
+		FA71EE4D2CF8B96D00676CA5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		FAB8F9432C8A1D7C00ABCD26 /* MetMuseumApi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetMuseumApi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB8F9462C8A1D7C00ABCD26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAB8F9482C8A1D7C00ABCD26 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FAB8F94A2C8A1D7C00ABCD26 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -25,7 +29,7 @@
 		FAB8F94F2C8A1D7D00ABCD26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAB8F9522C8A1D7D00ABCD26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAB8F9542C8A1D7D00ABCD26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FAB8F95B2C8A1D9500ABCD26 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		FAB8F95B2C8A1D9500ABCD26 /* Paintings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paintings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,10 +43,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA71EE4F2CF8B97D00676CA5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FA296C472CF9EEB0007488EA /* APIEndpoints.swift */,
+				FA71EE4D2CF8B96D00676CA5 /* NetworkManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		FAB8F93A2C8A1D7C00ABCD26 = {
 			isa = PBXGroup;
 			children = (
-				FAB8F9452C8A1D7C00ABCD26 /* NetworkingLesson */,
+				FAB8F9452C8A1D7C00ABCD26 /* MetMuseumApi */,
 				FAB8F9442C8A1D7C00ABCD26 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,21 +63,22 @@
 		FAB8F9442C8A1D7C00ABCD26 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FAB8F9432C8A1D7C00ABCD26 /* NetworkingLesson.app */,
+				FAB8F9432C8A1D7C00ABCD26 /* MetMuseumApi.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FAB8F9452C8A1D7C00ABCD26 /* NetworkingLesson */ = {
+		FAB8F9452C8A1D7C00ABCD26 /* MetMuseumApi */ = {
 			isa = PBXGroup;
 			children = (
+				FA71EE4F2CF8B97D00676CA5 /* Services */,
 				FAB8F95D2C8A1D9900ABCD26 /* Models */,
 				FAB8F95A2C8A1D8700ABCD26 /* App */,
 				FAB8F95F2C8A222100ABCD26 /* ViewControllers */,
 				FAB8F95E2C8A221900ABCD26 /* Storyboards */,
 				FAB8F94F2C8A1D7D00ABCD26 /* Assets.xcassets */,
 			);
-			path = NetworkingLesson;
+			path = MetMuseumApi;
 			sourceTree = "<group>";
 		};
 		FAB8F95A2C8A1D8700ABCD26 /* App */ = {
@@ -80,7 +94,7 @@
 		FAB8F95D2C8A1D9900ABCD26 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FAB8F95B2C8A1D9500ABCD26 /* Quote.swift */,
+				FAB8F95B2C8A1D9500ABCD26 /* Paintings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -105,9 +119,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FAB8F9422C8A1D7C00ABCD26 /* NetworkingLesson */ = {
+		FAB8F9422C8A1D7C00ABCD26 /* MetMuseumApi */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FAB8F9572C8A1D7D00ABCD26 /* Build configuration list for PBXNativeTarget "NetworkingLesson" */;
+			buildConfigurationList = FAB8F9572C8A1D7D00ABCD26 /* Build configuration list for PBXNativeTarget "MetMuseumApi" */;
 			buildPhases = (
 				FAB8F93F2C8A1D7C00ABCD26 /* Sources */,
 				FAB8F9402C8A1D7C00ABCD26 /* Frameworks */,
@@ -117,9 +131,9 @@
 			);
 			dependencies = (
 			);
-			name = NetworkingLesson;
+			name = MetMuseumApi;
 			productName = NetworkingLesson;
-			productReference = FAB8F9432C8A1D7C00ABCD26 /* NetworkingLesson.app */;
+			productReference = FAB8F9432C8A1D7C00ABCD26 /* MetMuseumApi.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -137,7 +151,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FAB8F93E2C8A1D7C00ABCD26 /* Build configuration list for PBXProject "NetworkingLesson" */;
+			buildConfigurationList = FAB8F93E2C8A1D7C00ABCD26 /* Build configuration list for PBXProject "MetMuseumApi" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -150,7 +164,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FAB8F9422C8A1D7C00ABCD26 /* NetworkingLesson */,
+				FAB8F9422C8A1D7C00ABCD26 /* MetMuseumApi */,
 			);
 		};
 /* End PBXProject section */
@@ -173,7 +187,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAB8F95C2C8A1D9500ABCD26 /* Quote.swift in Sources */,
+				FAB8F95C2C8A1D9500ABCD26 /* Paintings.swift in Sources */,
+				FA296C482CF9EEB0007488EA /* APIEndpoints.swift in Sources */,
+				FA71EE4E2CF8B96F00676CA5 /* NetworkManager.swift in Sources */,
 				FAB8F94B2C8A1D7C00ABCD26 /* MainViewController.swift in Sources */,
 				FAB8F9472C8A1D7C00ABCD26 /* AppDelegate.swift in Sources */,
 				FAB8F9492C8A1D7C00ABCD26 /* SceneDelegate.swift in Sources */,
@@ -330,22 +346,27 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8JL9UA833T;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NetworkingLesson/App/Info.plist;
+				INFOPLIST_FILE = MetMuseumApi/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alexpesenka.NetworkingLesson;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexpesenka.MetMuseumApi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -358,29 +379,34 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8JL9UA833T;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NetworkingLesson/App/Info.plist;
+				INFOPLIST_FILE = MetMuseumApi/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alexpesenka.NetworkingLesson;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexpesenka.MetMuseumApi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FAB8F93E2C8A1D7C00ABCD26 /* Build configuration list for PBXProject "NetworkingLesson" */ = {
+		FAB8F93E2C8A1D7C00ABCD26 /* Build configuration list for PBXProject "MetMuseumApi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FAB8F9552C8A1D7D00ABCD26 /* Debug */,
@@ -389,7 +415,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FAB8F9572C8A1D7D00ABCD26 /* Build configuration list for PBXNativeTarget "NetworkingLesson" */ = {
+		FAB8F9572C8A1D7D00ABCD26 /* Build configuration list for PBXNativeTarget "MetMuseumApi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FAB8F9582C8A1D7D00ABCD26 /* Debug */,
