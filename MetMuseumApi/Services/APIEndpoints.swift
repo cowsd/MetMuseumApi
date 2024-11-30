@@ -15,7 +15,7 @@ enum APIEndpoints {
             let baseURL = "https://collectionapi.metmuseum.org/public/collection/v1"
             switch self {
             case .searchPaintings:
-                return URL(string: "\(baseURL)/search?hasImages=true&q=painting")!
+                return URL(string: "\(baseURL)/search?hasImages=true&isHighlight=true&q=painting")!
             case .paintingDetails(let id):
                 return URL(string: "\(baseURL)/objects/\(id)")!
             }
