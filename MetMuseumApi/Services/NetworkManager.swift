@@ -25,20 +25,12 @@ final class NetworkManager {
                 print(error?.localizedDescription ?? "No Error")
                 return
             }
-//            // Добавляем вывод JSON перед декодированием
-//                   if let jsonString = String(data: data, encoding: .utf8) {
-//                       print("JSON Response: \(jsonString)")
-//                   }
             do {
                 let dataModel = try JSONDecoder().decode(type, from: data)
                 DispatchQueue.main.async{
                     completion(.success(dataModel))
                 }
             } catch {
-//                print("Decoding error: \(error)")
-//                    if let jsonString = String(data: data, encoding: .utf8) {
-//                        print("Failed JSON: \(jsonString)")
-//                    }
                 completion(.failure(.decodingError))
                 
             }

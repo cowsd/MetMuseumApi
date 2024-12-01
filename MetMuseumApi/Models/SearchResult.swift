@@ -11,7 +11,7 @@ struct SearchResult: Decodable {
     let objectIDs: [Int]
 }
 
-struct Painting: Decodable {
+struct ArtObject: Decodable {
     let title: String
     let artistDisplayName: String
     let primaryImageSmall: String?

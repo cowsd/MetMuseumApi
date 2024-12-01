@@ -8,15 +8,15 @@
 import Foundation
 
 enum APIEndpoints {
-        case searchPaintings
-        case paintingDetails(id: Int)
+        case searchArtObjects
+        case objectDetails(id: Int)
         
         var url: URL {
             let baseURL = "https://collectionapi.metmuseum.org/public/collection/v1"
             switch self {
-            case .searchPaintings:
+            case .searchArtObjects:
                 return URL(string: "\(baseURL)/search?hasImages=true&isHighlight=true&q=painting")!
-            case .paintingDetails(let id):
+            case .objectDetails(let id):
                 return URL(string: "\(baseURL)/objects/\(id)")!
             }
         }
