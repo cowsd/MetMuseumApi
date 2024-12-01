@@ -39,7 +39,11 @@ final class MainViewController: UIViewController {
 extension MainViewController {
     
     private func fetchArtObjects(){
-        networkManager.fetch(SearchResult.self, from: APIEndpoints.searchArtObjects.url) { [weak self] result in
+        networkManager.fetch(
+            SearchResult.self,
+            from: APIEndpoints.searchArtObjects.url
+        ) { [weak self] result in
+            
             switch result {
             case .success(let searchResult):
                 self?.artObjectsIDs = searchResult.objectIDs
@@ -54,7 +58,12 @@ extension MainViewController {
         guard let randomArtObjectID = artObjectsIDs.randomElement() else {
             return
         }
-        networkManager.fetch(ArtObject.self, from: APIEndpoints.objectDetails(id: randomArtObjectID).url) { [weak self] result in
+        
+        networkManager.fetch(
+            ArtObject.self,
+            from: APIEndpoints.objectDetails(id: randomArtObjectID).url
+        ) { [weak self] result in
+            
             switch result {
             case .success(let artObject):
                 guard let imageURL = artObject.primaryImageSmall, !imageURL.isEmpty else {

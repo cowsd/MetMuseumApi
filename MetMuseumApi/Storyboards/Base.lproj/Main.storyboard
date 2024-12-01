@@ -6,6 +6,7 @@
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -169,6 +170,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="i3r-HD-bDL" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8Gh-Mc-GVx">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" systemColor="systemRedColor"/>
@@ -176,15 +178,52 @@
                     </tabBar>
                     <connections>
                         <segue destination="MPI-sk-jWg" kind="relationship" relationship="viewControllers" id="qhI-8S-4Q8"/>
+                        <segue destination="XiY-e2-yqH" kind="relationship" relationship="viewControllers" id="yyY-HB-aPl"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WnA-zr-bai" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-512.2137404580152" y="-45.070422535211272"/>
         </scene>
+        <!--Artists-->
+        <scene sceneID="Hvp-07-cm1">
+            <objects>
+                <collectionViewController id="XiY-e2-yqH" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="oh0-FU-q0S">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hTC-AE-wpf">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="A20-mK-cKC">
+                                <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="RfF-1h-IIl">
+                                    <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionViewCellContentView>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="XiY-e2-yqH" id="6eq-FM-KdL"/>
+                            <outlet property="delegate" destination="XiY-e2-yqH" id="Q0R-Hr-UQ4"/>
+                        </connections>
+                    </collectionView>
+                    <tabBarItem key="tabBarItem" title="Artists" image="person.crop.square" catalog="system" id="cjS-8q-aST"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eOb-Lb-EVi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="415" y="-731"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="110" height="128"/>
+        <image name="person.crop.square" catalog="system" width="128" height="114"/>
         <image name="questionmark.app.dashed" catalog="system" width="128" height="114"/>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
