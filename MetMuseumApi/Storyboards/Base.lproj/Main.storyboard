@@ -6,7 +6,6 @@
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -164,6 +163,74 @@
             </objects>
             <point key="canvasLocation" x="414.50381679389312" y="-45.070422535211272"/>
         </scene>
+        <!--Artists-->
+        <scene sceneID="RgV-EE-1V1">
+            <objects>
+                <tableViewController id="bxo-0y-Xvr" customClass="ArtistsViewController" customModule="MetMuseumApi" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="cOd-kB-HPt">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArtistCell" id="rGE-Ux-ex1" customClass="ArtistCell" customModule="MetMuseumApi" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="140.33332824707031"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rGE-Ux-ex1" id="CIF-Si-0Qq">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="140.33332824707031"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rwj-iV-ukO">
+                                            <rect key="frame" x="0.0" y="0.0" width="140" height="140.33333333333331"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="140" id="A4G-1K-ezT"/>
+                                                <constraint firstAttribute="height" constant="140" id="q3y-Qr-LEO"/>
+                                            </constraints>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2W0-sE-Pgc">
+                                            <rect key="frame" x="156" y="48" width="88" height="44.333333333333343"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZ8-DO-YCz">
+                                                    <rect key="frame" x="0.0" y="0.0" width="88" height="19.333333333333332"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="### paintings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eV7-mg-LFw">
+                                                    <rect key="frame" x="0.0" y="27.333333333333329" width="88" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="rwj-iV-ukO" firstAttribute="leading" secondItem="CIF-Si-0Qq" secondAttribute="leading" id="TNd-w2-glt"/>
+                                        <constraint firstItem="2W0-sE-Pgc" firstAttribute="leading" secondItem="rwj-iV-ukO" secondAttribute="trailing" constant="16" id="fbn-Xb-c0b"/>
+                                        <constraint firstAttribute="bottom" secondItem="rwj-iV-ukO" secondAttribute="bottom" id="gI5-FX-3jZ"/>
+                                        <constraint firstItem="rwj-iV-ukO" firstAttribute="top" secondItem="CIF-Si-0Qq" secondAttribute="top" id="ilP-CW-cOG"/>
+                                        <constraint firstItem="2W0-sE-Pgc" firstAttribute="centerY" secondItem="CIF-Si-0Qq" secondAttribute="centerY" id="lZc-62-4qC"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="artistImage" destination="rwj-iV-ukO" id="0Mq-h5-bi4"/>
+                                    <outlet property="artistName" destination="xZ8-DO-YCz" id="EMM-Yq-uQi"/>
+                                    <outlet property="numberOfObjects" destination="eV7-mg-LFw" id="XZU-1T-ZBc"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="bxo-0y-Xvr" id="boM-pp-Dvi"/>
+                            <outlet property="delegate" destination="bxo-0y-Xvr" id="rfv-0k-1tz"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Artists" image="person.crop.rectangle.stack" catalog="system" id="HHw-kR-MPZ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d4j-Ru-GpT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="415" y="-729"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="G5k-5H-mtv">
             <objects>
@@ -174,59 +241,25 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" systemColor="systemRedColor"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="selectedImageTintColor" systemColor="systemRedColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="MPI-sk-jWg" kind="relationship" relationship="viewControllers" id="qhI-8S-4Q8"/>
-                        <segue destination="XiY-e2-yqH" kind="relationship" relationship="viewControllers" id="yyY-HB-aPl"/>
+                        <segue destination="bxo-0y-Xvr" kind="relationship" relationship="viewControllers" id="U24-En-BzF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WnA-zr-bai" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-512.2137404580152" y="-45.070422535211272"/>
         </scene>
-        <!--Artists-->
-        <scene sceneID="Hvp-07-cm1">
-            <objects>
-                <collectionViewController id="XiY-e2-yqH" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="oh0-FU-q0S">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hTC-AE-wpf">
-                            <size key="itemSize" width="128" height="128"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="A20-mK-cKC">
-                                <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="RfF-1h-IIl">
-                                    <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </collectionViewCellContentView>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="XiY-e2-yqH" id="6eq-FM-KdL"/>
-                            <outlet property="delegate" destination="XiY-e2-yqH" id="Q0R-Hr-UQ4"/>
-                        </connections>
-                    </collectionView>
-                    <tabBarItem key="tabBarItem" title="Artists" image="person.crop.square" catalog="system" id="cjS-8q-aST"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eOb-Lb-EVi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="415" y="-731"/>
-        </scene>
     </scenes>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="110" height="128"/>
-        <image name="person.crop.square" catalog="system" width="128" height="114"/>
+        <image name="person.crop.rectangle.stack" catalog="system" width="126" height="128"/>
         <image name="questionmark.app.dashed" catalog="system" width="128" height="114"/>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
