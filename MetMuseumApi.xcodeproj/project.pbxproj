@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FA296C482CF9EEB0007488EA /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA296C472CF9EEB0007488EA /* APIEndpoints.swift */; };
 		FA71EE4E2CF8B96F00676CA5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71EE4D2CF8B96D00676CA5 /* NetworkManager.swift */; };
+		FA8F7E552D034E5400C98E02 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F7E542D034E5400C98E02 /* Artist.swift */; };
 		FA9AE1F52D00E58800B58A8E /* ArtistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AE1F42D00E58800B58A8E /* ArtistCell.swift */; };
 		FAB8F9472C8A1D7C00ABCD26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB8F9462C8A1D7C00ABCD26 /* AppDelegate.swift */; };
 		FAB8F9492C8A1D7C00ABCD26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB8F9482C8A1D7C00ABCD26 /* SceneDelegate.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		FA296C472CF9EEB0007488EA /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
 		FA71EE4D2CF8B96D00676CA5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		FA8F7E542D034E5400C98E02 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		FA9AE1F42D00E58800B58A8E /* ArtistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCell.swift; sourceTree = "<group>"; };
 		FAB8F9432C8A1D7C00ABCD26 /* MetMuseumApi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetMuseumApi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB8F9462C8A1D7C00ABCD26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				FAB8F95B2C8A1D9500ABCD26 /* SearchResult.swift */,
+				FA8F7E542D034E5400C98E02 /* Artist.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				FAB8F95C2C8A1D9500ABCD26 /* SearchResult.swift in Sources */,
 				FA296C482CF9EEB0007488EA /* APIEndpoints.swift in Sources */,
 				FA9AE1F52D00E58800B58A8E /* ArtistCell.swift in Sources */,
+				FA8F7E552D034E5400C98E02 /* Artist.swift in Sources */,
 				FA71EE4E2CF8B96F00676CA5 /* NetworkManager.swift in Sources */,
 				FAB8F94B2C8A1D7C00ABCD26 /* MainViewController.swift in Sources */,
 				FAB8F9472C8A1D7C00ABCD26 /* AppDelegate.swift in Sources */,

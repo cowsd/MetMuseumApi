@@ -164,72 +164,73 @@
             <point key="canvasLocation" x="414.50381679389312" y="-45.070422535211272"/>
         </scene>
         <!--Artists-->
-        <scene sceneID="RgV-EE-1V1">
+        <scene sceneID="I2F-uk-E1h">
             <objects>
-                <tableViewController id="bxo-0y-Xvr" customClass="ArtistsViewController" customModule="MetMuseumApi" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="cOd-kB-HPt">
+                <collectionViewController id="Z23-X8-NN2" customClass="ArtistsViewController" customModule="MetMuseumApi" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Tnn-Md-TfW">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArtistCell" id="rGE-Ux-ex1" customClass="ArtistCell" customModule="MetMuseumApi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="393" height="140.33332824707031"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rGE-Ux-ex1" id="CIF-Si-0Qq">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="140.33332824707031"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OTA-Lh-Afp">
+                            <size key="itemSize" width="340" height="220"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="artistDetails" id="34k-mo-Des" customClass="ArtistCell" customModule="MetMuseumApi" customModuleProvider="target">
+                                <rect key="frame" x="26.666666666666668" y="0.0" width="340" height="220"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="340" height="220"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rwj-iV-ukO">
-                                            <rect key="frame" x="0.0" y="0.0" width="140" height="140.33333333333331"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2k1-5D-nx8">
+                                            <rect key="frame" x="110" y="24" width="120" height="120"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="140" id="A4G-1K-ezT"/>
-                                                <constraint firstAttribute="height" constant="140" id="q3y-Qr-LEO"/>
+                                                <constraint firstAttribute="width" constant="120" id="FcN-mr-ROz"/>
+                                                <constraint firstAttribute="height" constant="120" id="Xem-oK-xJD"/>
                                             </constraints>
                                         </imageView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2W0-sE-Pgc">
-                                            <rect key="frame" x="156" y="48" width="88" height="44.333333333333343"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZ8-DO-YCz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="88" height="19.333333333333332"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="### paintings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eV7-mg-LFw">
-                                                    <rect key="frame" x="0.0" y="27.333333333333329" width="88" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5N-K6-seX">
+                                            <rect key="frame" x="128.33333333333334" y="156" width="83.333333333333343" height="19.333333333333343"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gj0-65-d79">
+                                            <rect key="frame" x="154.66666666666666" y="179.33333333333334" width="31" height="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="rwj-iV-ukO" firstAttribute="leading" secondItem="CIF-Si-0Qq" secondAttribute="leading" id="TNd-w2-glt"/>
-                                        <constraint firstItem="2W0-sE-Pgc" firstAttribute="leading" secondItem="rwj-iV-ukO" secondAttribute="trailing" constant="16" id="fbn-Xb-c0b"/>
-                                        <constraint firstAttribute="bottom" secondItem="rwj-iV-ukO" secondAttribute="bottom" id="gI5-FX-3jZ"/>
-                                        <constraint firstItem="rwj-iV-ukO" firstAttribute="top" secondItem="CIF-Si-0Qq" secondAttribute="top" id="ilP-CW-cOG"/>
-                                        <constraint firstItem="2W0-sE-Pgc" firstAttribute="centerY" secondItem="CIF-Si-0Qq" secondAttribute="centerY" id="lZc-62-4qC"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="W5N-K6-seX" firstAttribute="top" secondItem="2k1-5D-nx8" secondAttribute="bottom" constant="12" id="Aij-eX-7PP"/>
+                                    <constraint firstItem="Gj0-65-d79" firstAttribute="centerX" secondItem="34k-mo-Des" secondAttribute="centerX" id="KBU-wA-vbC"/>
+                                    <constraint firstItem="2k1-5D-nx8" firstAttribute="centerX" secondItem="34k-mo-Des" secondAttribute="centerX" id="KwA-wA-MbK"/>
+                                    <constraint firstItem="W5N-K6-seX" firstAttribute="centerX" secondItem="34k-mo-Des" secondAttribute="centerX" id="dgE-ef-bYC"/>
+                                    <constraint firstItem="Gj0-65-d79" firstAttribute="top" secondItem="W5N-K6-seX" secondAttribute="bottom" constant="4" id="gIV-Hr-aBz"/>
+                                    <constraint firstItem="2k1-5D-nx8" firstAttribute="top" secondItem="34k-mo-Des" secondAttribute="topMargin" constant="16" id="zPl-1I-9tO"/>
+                                </constraints>
                                 <connections>
-                                    <outlet property="artistImage" destination="rwj-iV-ukO" id="0Mq-h5-bi4"/>
-                                    <outlet property="artistName" destination="xZ8-DO-YCz" id="EMM-Yq-uQi"/>
-                                    <outlet property="numberOfObjects" destination="eV7-mg-LFw" id="XZU-1T-ZBc"/>
+                                    <outlet property="artistImage" destination="2k1-5D-nx8" id="DlS-xJ-mcQ"/>
+                                    <outlet property="artistNameLabel" destination="W5N-K6-seX" id="XNC-CE-gqI"/>
+                                    <outlet property="numberOfWorksLabel" destination="Gj0-65-d79" id="Tdx-ri-K1o"/>
                                 </connections>
-                            </tableViewCell>
-                        </prototypes>
+                            </collectionViewCell>
+                        </cells>
                         <connections>
-                            <outlet property="dataSource" destination="bxo-0y-Xvr" id="boM-pp-Dvi"/>
-                            <outlet property="delegate" destination="bxo-0y-Xvr" id="rfv-0k-1tz"/>
+                            <outlet property="dataSource" destination="Z23-X8-NN2" id="i7R-tS-FzP"/>
+                            <outlet property="delegate" destination="Z23-X8-NN2" id="2Eh-sh-HJ6"/>
                         </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Artists" image="person.crop.rectangle.stack" catalog="system" id="HHw-kR-MPZ"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="d4j-Ru-GpT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                    </collectionView>
+                    <tabBarItem key="tabBarItem" title="Artists" image="person.crop.rectangle.stack" catalog="system" id="Gjp-2g-vtW"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sId-ak-ckp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="415" y="-729"/>
+            <point key="canvasLocation" x="415" y="-752"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="G5k-5H-mtv">
@@ -241,12 +242,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" systemColor="systemRedColor"/>
-                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="selectedImageTintColor" systemColor="systemRedColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="MPI-sk-jWg" kind="relationship" relationship="viewControllers" id="qhI-8S-4Q8"/>
-                        <segue destination="bxo-0y-Xvr" kind="relationship" relationship="viewControllers" id="U24-En-BzF"/>
+                        <segue destination="Z23-X8-NN2" kind="relationship" relationship="viewControllers" id="y7i-Ee-EpO"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WnA-zr-bai" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
