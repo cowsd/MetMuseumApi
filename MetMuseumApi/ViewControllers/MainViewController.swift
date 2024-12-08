@@ -8,9 +8,9 @@
 import UIKit
 
 final class MainViewController: UIViewController {
-
     
-// MARK: - IB Outlets
+    
+    // MARK: - IB Outlets
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
@@ -21,12 +21,12 @@ final class MainViewController: UIViewController {
     @IBOutlet weak var buttonActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var showMoreButton: UIButton!
     
-// MARK: - Private Properties
+    // MARK: - Private Properties
     
     private let networkManager = NetworkManager.shared
     private var artObjectsIDs: [Int] = []
     
-// MARK: - Overrides Methods
+    // MARK: - Overrides Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         imageActivityIndicator.startAnimating()
@@ -35,7 +35,7 @@ final class MainViewController: UIViewController {
         fetchArtObjectIDs()
     }
     
-// MARK: - IB Actions
+    // MARK: - IB Actions
     
     @IBAction func showMoreTapped(_ sender: Any) {
         showLoadingStateForButton()
@@ -68,9 +68,9 @@ extension MainViewController {
         }
         let randomArtObjectID = artObjectsIDs[randomIndex]
         
-        networkManager.fetch(ArtObject.self, from: APIEndpoints.objectDetails(id: randomArtObjectID).url) {
-            [weak self] result in
-            
+        networkManager.fetch(ArtObject.self, from: APIEndpoints.objectDetails(id: randomArtObjectID).url)
+        { [weak self] result in
+
             switch result {
             case .success(let artObject):
                 guard let imageURL = artObject.primaryImageSmall, !imageURL.isEmpty else {
@@ -82,12 +82,12 @@ extension MainViewController {
                 
             case .failure(let error):
                 print("Failed to fetch art object details: \(error)")
+                self?.fetchRandomArtObjectWithImage()
             }
         }
     }
     
     private func fetchImage(for artObject: ArtObject) {
-        print("Start Fetching \(Thread.isMainThread)")
         guard
             let imageURLString = artObject.primaryImageSmall,
             let imageURL = URL(string: imageURLString)
@@ -126,13 +126,13 @@ extension MainViewController {
         buttonActivityIndicator.startAnimating()
         
     }
-
+    
     private func hideLoadingStateForButton() {
         buttonActivityIndicator.stopAnimating()
         showMoreButton.setTitle("Show More", for: .normal)
         showMoreButton.isEnabled = true
         showMoreButton.backgroundColor = .white
-
+        
     }
     
     private func updateUI(with artObject: ArtObject, image: UIImage?) {
