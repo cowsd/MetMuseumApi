@@ -124,7 +124,6 @@ extension MainViewController {
         showMoreButton.backgroundColor = .systemGray5
         showMoreButton.setTitle("", for: .normal)
         buttonActivityIndicator.startAnimating()
-        
     }
     
     private func hideLoadingStateForButton() {
@@ -132,7 +131,6 @@ extension MainViewController {
         showMoreButton.setTitle("Show More", for: .normal)
         showMoreButton.isEnabled = true
         showMoreButton.backgroundColor = .white
-        
     }
     
     private func updateUI(with artObject: ArtObject, image: UIImage?) {
