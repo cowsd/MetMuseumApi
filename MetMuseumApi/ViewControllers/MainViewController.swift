@@ -8,69 +8,77 @@
 import UIKit
 
 final class MainViewController: UIViewController {
+
     
-    @IBOutlet weak var objectTitle: UILabel!
-    @IBOutlet weak var objectArtist: UILabel!
-    @IBOutlet weak var objectDate: UILabel!
-    @IBOutlet weak var objectMedium: UILabel!
+// MARK: - IB Outlets
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var artistLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var mediumLabel: UILabel!
     @IBOutlet weak var objectImage: UIImageView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var imageActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var buttonActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var showMoreButton: UIButton!
+    
+// MARK: - Private Properties
     
     private let networkManager = NetworkManager.shared
     private var artObjectsIDs: [Int] = []
     
+// MARK: - Overrides Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageActivityIndicator.startAnimating()
+        view.backgroundColor = .black
         showMoreButton.layer.cornerRadius = 10
-        activityIndicator.startAnimating()
-        fetchArtObjects()
+        fetchArtObjectIDs()
     }
+    
+// MARK: - IB Actions
     
     @IBAction func showMoreTapped(_ sender: Any) {
-        fetchNextValidObject()
+        showLoadingStateForButton()
+        fetchRandomArtObjectWithImage()
     }
-    
-    
 }
 
 
-// MARK: - Networking
+// MARK: - Private Methods: Networking
 extension MainViewController {
     
-    private func fetchArtObjects(){
-        networkManager.fetch(
-            SearchResult.self,
-            from: APIEndpoints.searchArtObjects.url
-        ) { [weak self] result in
+    private func fetchArtObjectIDs(){
+        networkManager.fetch(SearchResult.self, from: APIEndpoints.searchObjects.url)
+        { [weak self] result in
             
             switch result {
             case .success(let searchResult):
                 self?.artObjectsIDs = searchResult.objectIDs
-                self?.fetchNextValidObject()
+                self?.fetchRandomArtObjectWithImage()
             case .failure(let error):
                 print(error)
             }
         }
     }
     
-    private func fetchNextValidObject() {
-        guard let randomArtObjectID = artObjectsIDs.randomElement() else {
+    private func fetchRandomArtObjectWithImage() {
+        imageActivityIndicator.startAnimating()
+        guard let randomIndex = artObjectsIDs.indices.randomElement() else {
             return
         }
+        let randomArtObjectID = artObjectsIDs[randomIndex]
         
-        networkManager.fetch(
-            ArtObject.self,
-            from: APIEndpoints.objectDetails(id: randomArtObjectID).url
-        ) { [weak self] result in
+        networkManager.fetch(ArtObject.self, from: APIEndpoints.objectDetails(id: randomArtObjectID).url) {
+            [weak self] result in
             
             switch result {
             case .success(let artObject):
                 guard let imageURL = artObject.primaryImageSmall, !imageURL.isEmpty else {
-                    self?.fetchNextValidObject()
+                    self?.artObjectsIDs.remove(at: randomIndex)
+                    self?.fetchRandomArtObjectWithImage()
                     return
                 }
-                self?.updateUI(with: artObject)
+                self?.fetchImage(for: artObject)
                 
             case .failure(let error):
                 print("Failed to fetch art object details: \(error)")
@@ -78,42 +86,63 @@ extension MainViewController {
         }
     }
     
-    private func fetchImage(from urlString: String?) {
-        activityIndicator.startAnimating()
-        
+    private func fetchImage(for artObject: ArtObject) {
+        print("Start Fetching \(Thread.isMainThread)")
         guard
-            let urlString, !urlString.isEmpty,
-            let imageURL = URL(string: urlString)
+            let imageURLString = artObject.primaryImageSmall,
+            let imageURL = URL(string: imageURLString)
         else {
-            objectImage.image = UIImage(systemName: "photo")
-            activityIndicator.stopAnimating()
+            fetchRandomArtObjectWithImage()
             return
         }
         
         networkManager.fetchImage(from: imageURL) { [weak self] result in
-            DispatchQueue.main.async {
-                self?.activityIndicator.stopAnimating()
-            }
             switch result {
             case .success(let imageData):
-                self?.objectImage.image = UIImage(data: imageData)
+                guard let image = UIImage(data: imageData) else {
+                    self?.updateUI(with: artObject, image: UIImage(systemName: "photo"))
+                    return
+                }
+                self?.updateUI(with: artObject, image: image)
             case .failure(let error):
                 print(error)
+                self?.updateUI(with: artObject, image: UIImage(systemName: "photo"))
                 
             }
         }
         
     }
     
-    private func updateUI(with artObject: ArtObject) {
-        objectTitle.text = artObject.safeTitle
-        objectArtist.text = artObject.safeArtistDisplayName
-        objectDate.text = artObject.safeObjectDate
-        objectMedium.text = artObject.safeMedium
-        
-        fetchImage(from: artObject.primaryImageSmall)
+}
+
+
+// MARK: - Private Methods: UI
+
+extension MainViewController {
+    private func showLoadingStateForButton() {
+        showMoreButton.isEnabled = false
+        showMoreButton.backgroundColor = .systemGray5
+        showMoreButton.setTitle("", for: .normal)
+        buttonActivityIndicator.startAnimating()
         
     }
+
+    private func hideLoadingStateForButton() {
+        buttonActivityIndicator.stopAnimating()
+        showMoreButton.setTitle("Show More", for: .normal)
+        showMoreButton.isEnabled = true
+        showMoreButton.backgroundColor = .white
+
+    }
     
+    private func updateUI(with artObject: ArtObject, image: UIImage?) {
+        titleLabel.text = artObject.safeTitle
+        artistLabel.text = artObject.safeArtistDisplayName
+        dateLabel.text = artObject.safeObjectDate
+        mediumLabel.text = artObject.safeMedium
+        objectImage.image = image
+        imageActivityIndicator.stopAnimating()
+        hideLoadingStateForButton()
+    }
     
 }
