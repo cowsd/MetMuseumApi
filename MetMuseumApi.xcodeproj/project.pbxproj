@@ -16,6 +16,7 @@
 		FAB8F9502C8A1D7D00ABCD26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAB8F94F2C8A1D7D00ABCD26 /* Assets.xcassets */; };
 		FAB8F9532C8A1D7D00ABCD26 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FAB8F9522C8A1D7D00ABCD26 /* Base */; };
 		FAB8F95C2C8A1D9500ABCD26 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB8F95B2C8A1D9500ABCD26 /* SearchResult.swift */; };
+		FAEE461C2D480C0D0025477B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FAEE461B2D480C0D0025477B /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAEE461C2D480C0D0025477B /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				FAB8F9452C8A1D7C00ABCD26 /* MetMuseumApi */,
+				FAEE46192D480B4E0025477B /* Frameworks */,
 				FAB8F9442C8A1D7C00ABCD26 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -116,6 +119,13 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		FAEE46192D480B4E0025477B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -160,6 +170,9 @@
 				Base,
 			);
 			mainGroup = FAB8F93A2C8A1D7C00ABCD26;
+			packageReferences = (
+				FAEE461A2D480C0D0025477B /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = FAB8F9442C8A1D7C00ABCD26 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -425,6 +438,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FAEE461A2D480C0D0025477B /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FAEE461B2D480C0D0025477B /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAEE461A2D480C0D0025477B /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FAB8F93B2C8A1D7C00ABCD26 /* Project object */;
 }

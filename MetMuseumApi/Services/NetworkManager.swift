@@ -6,51 +6,75 @@
 //
 
 import Foundation
+import Alamofire
 
-enum NetworkError: Error {
-    case invalidURL
-    case noData
-    case decodingError
-}
 
 final class NetworkManager {
     
     static let shared = NetworkManager()
     private init() {}
     
-    func fetch<T: Decodable>(_ type: T.Type, from url: URL, completion: @escaping (Result<T, NetworkError>) -> Void) {
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data else {
-                completion(.failure(.noData))
-                print(error?.localizedDescription ?? "No Error")
-                return
-            }
-            do {
-                let dataModel = try JSONDecoder().decode(type, from: data)
-                DispatchQueue.main.async{
-                    completion(.success(dataModel))
-                }
-            } catch {
-                DispatchQueue.main.async{
-                    completion(.failure(.decodingError))
+    func fetchSearchObjects(from url: URL, completion: @escaping (Result<SearchResult, AFError>) -> Void) {
+        AF.request(url)
+            .validate()
+            .responseDecodable(of: SearchResult.self) { dataResponse in
+                switch dataResponse.result {
+                    case .success(let searchObjects):
+                    completion(.success(searchObjects))
+                case .failure(let error):
+                    completion(.failure(error))
+                    print(error)
                 }
             }
-        }.resume()
     }
     
-    func fetchImage(from url: URL, completion: @escaping (Result<Data, NetworkError>) -> Void) {
-        DispatchQueue.global().async {
-            guard let imageData = try? Data(contentsOf: url) else {
-                DispatchQueue.main.async {
-                    completion(.failure(.noData))
+    func fetchArtObject(from url: URL, completion: @escaping (Result<ArtObject, AFError>) -> Void) {
+        AF.request(url)
+            .validate()
+            .responseDecodable(of: ArtObject.self) { dataResponse in
+                switch dataResponse.result {
+                    case .success(let artObject):
+                    completion(.success(artObject))
+                case .failure(let error):
+                    completion(.failure(error))
+                    print(error)
                 }
-                return
             }
-            DispatchQueue.main.async {
-                completion(.success(imageData))
-            }
-        }
     }
+    
+    
+    func fetchData(from url: URL, completion: @escaping (Result<Data, AFError>) -> Void) {
+        AF.request(url)
+            .validate()
+            .responseData { responseData in
+                switch responseData.result {
+                    case .success(let data):
+                    completion(.success(data))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+    }
+
+    
+//    func fetchImage(from url: URL, completion: @escaping (Result<Data, AFError>)) -> Void {
+//        
+//    }
+    
+    
+//    func fetchImage(from url: URL, completion: @escaping (Result<Data, NetworkError>) -> Void) {
+//        DispatchQueue.global().async {
+//            guard let imageData = try? Data(contentsOf: url) else {
+//                DispatchQueue.main.async {
+//                    completion(.failure(.noData))
+//                }
+//                return
+//            }
+//            DispatchQueue.main.async {
+//                completion(.success(imageData))
+//            }
+//        }
+//    }
     
     
 }

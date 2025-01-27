@@ -39,7 +39,7 @@ final class MainViewController: UIViewController {
     
     @IBAction func showMoreTapped(_ sender: Any) {
         showLoadingStateForButton()
-        fetchRandomArtObjectWithImage()
+        fetchValidObject()
     }
 }
 
@@ -48,71 +48,67 @@ final class MainViewController: UIViewController {
 extension MainViewController {
     
     private func fetchArtObjectIDs(){
-        networkManager.fetch(SearchResult.self, from: APIEndpoints.searchObjects.url)
-        { [weak self] result in
-            
+        networkManager.fetchSearchObjects(from: APIEndpoints.searchObjects.url) { [weak self] result in
             switch result {
             case .success(let searchResult):
                 self?.artObjectsIDs = searchResult.objectIDs
-                self?.fetchRandomArtObjectWithImage()
+                print(searchResult)
+                self?.fetchValidObject()
             case .failure(let error):
                 print(error)
             }
         }
     }
     
-    private func fetchRandomArtObjectWithImage() {
+    private func fetchValidObject() {
         imageActivityIndicator.startAnimating()
         guard let randomIndex = artObjectsIDs.indices.randomElement() else {
             return
         }
         let randomArtObjectID = artObjectsIDs[randomIndex]
         
-        networkManager.fetch(ArtObject.self, from: APIEndpoints.objectDetails(id: randomArtObjectID).url)
-        { [weak self] result in
-
+        networkManager.fetchArtObject(from: APIEndpoints.objectDetails(id: randomArtObjectID).url) { [weak self] result in
             switch result {
             case .success(let artObject):
                 guard let imageURL = artObject.primaryImageSmall, !imageURL.isEmpty else {
                     self?.artObjectsIDs.remove(at: randomIndex)
-                    self?.fetchRandomArtObjectWithImage()
+                    self?.fetchValidObject()
                     return
                 }
                 self?.fetchImage(for: artObject)
-                
             case .failure(let error):
                 print("Failed to fetch art object details: \(error)")
-                self?.fetchRandomArtObjectWithImage()
-            }
-        }
-    }
-    
-    private func fetchImage(for artObject: ArtObject) {
-        guard
-            let imageURLString = artObject.primaryImageSmall,
-            let imageURL = URL(string: imageURLString)
-        else {
-            fetchRandomArtObjectWithImage()
-            return
-        }
-        
-        networkManager.fetchImage(from: imageURL) { [weak self] result in
-            switch result {
-            case .success(let imageData):
-                guard let image = UIImage(data: imageData) else {
-                    self?.updateUI(with: artObject, image: UIImage(systemName: "photo"))
-                    return
-                }
-                self?.updateUI(with: artObject, image: image)
-            case .failure(let error):
-                print(error)
-                self?.updateUI(with: artObject, image: UIImage(systemName: "photo"))
+                self?.fetchValidObject()
                 
             }
         }
         
     }
-    
+        
+        private func fetchImage(for artObject: ArtObject) {
+            guard
+                let imageURLString = artObject.primaryImageSmall,
+                let imageURL = URL(string: imageURLString)
+            else {
+                fetchValidObject()
+                return
+            }
+            networkManager.fetchData(from: imageURL) { [weak self] result in
+                switch result {
+                case .success(let imageData):
+                    guard let image = UIImage(data: imageData) else {
+                        self?.updateUI(with: artObject, image: UIImage(systemName: "photo"))
+                        return
+                    }
+                    self?.updateUI(with: artObject, image: image)
+                
+                case .failure(let error):
+                    print(error)
+                    self?.updateUI(with: artObject, image: UIImage(systemName: "photo"))
+
+                }
+            }
+        }
 }
 
 
